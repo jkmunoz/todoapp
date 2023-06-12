@@ -80,15 +80,27 @@ def set_completed_todo(todo_id):
         db.session.close()
     return redirect(url_for('index'))
 
+#@app.route('/lists/<list_id>')
+#def get_list_todos(list_id):
+#        return render_template('index.html', 
+#        todos=Todo.query.filter_by(list_id=list_id).order_by('id')
+#        .all())
+
 @app.route('/lists/<list_id>')
 def get_list_todos(list_id):
-        return render_template('index.html', 
-        todos=Todo.query.filter_by(list_id=list_id).order_by('id')
-        .all())
+    lists = []
+    todos = Todo.query.all()
+    active_list = list_id
+    return render_template(
+        'index.html',
+        todos=todos,
+        lists=lists,
+        active_list=active_list
+    )
 
 @app.route('/')
 def index():
-    return redirect(url_for('get_list_todos',list_id=1))
+    return redirect(url_for('get_list_todos', list_id=1))
 
 if __name__ == '__main__':
    app.run(host="0.0.0.0", port=5000)
