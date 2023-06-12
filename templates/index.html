@@ -15,7 +15,7 @@
             clear: both;
            }
            li button {
-            -webkit-appearance: none;
+            appearance: none;
             border: none;
             outline: none;
             color: red;
@@ -53,7 +53,7 @@
           <li>
             <input class="check-completed" data-id="{{ todo.id }}" type="checkbox" {% if todo.completed %} checked {% endif %} />
             {{ todo.description }}
-            <button class="delete-button" data-id="{{ todo.id }}">%cross;</button>
+            <button class="delete-button" data-id="{{ todo.id }}">&cross;</button>
           </li>
           {% endfor %}
         </ul>
