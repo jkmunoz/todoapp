@@ -91,6 +91,7 @@ def get_list_todos(list_id):
     lists = []
     todos = Todo.query.all()
     active_list = list_id
+
     return render_template(
         'index.html',
         todos=todos,
